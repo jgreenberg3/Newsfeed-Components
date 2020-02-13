@@ -88,16 +88,35 @@ const data = [
   }
 ];
 
-function createComponent(){
+function createComponent(object){
 
-  const articleDiv = document.createElement('div');
-  const h2Title = document.createElement('h2');
-  const paragraph = document.createElement('p');
+  const article = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const date = document.createElement('p');
   const spanElement = document.createElement('span');
   
-  
+  article.appendChild(articleTitle);
+  article.appendChild(date);
+  article.appendChild(spanElement);
+
+  article.classList.add('article');
+  articleTitle.classList.add('');
+  date.classList.add('date');
+  spanElement.classList.add('expandButton');
+
+  spanElement.addEventListener('click', event => {
+    console.log('button click', event.target);
+
+    // toggle 'hide-btn' on the button
+    spanElement.classList.toggle('hide-btn');
+
+    // change the visibility of the 'article' class with the 'toggle-on' class
+    article.classList.toggle('toggle-on');
+
+  })
 
 
+  return article;
 }
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
