@@ -93,16 +93,28 @@ function createComponent(object){
   const article = document.createElement('div');
   const articleTitle = document.createElement('h2');
   const date = document.createElement('p');
-  const spanElement = document.createElement('span');
+  const p1 = document.createElement('p');
+  const p2 = document.createElement('p');
+  const p3 = document.createElement('p'); 
+  const expandButton = document.createElement('span');
   
   article.appendChild(articleTitle);
   article.appendChild(date);
-  article.appendChild(spanElement);
+  article.appendChild(p1);
+  article.appendChild(p2);
+  article.appendChild(p3);
+  article.appendChild(expandButton);
 
   article.classList.add('article');
-  articleTitle.classList.add('');
+  articleTitle.classList.add('articleTitle');
   date.classList.add('date');
-  spanElement.classList.add('expandButton');
+  
+  expandButton.classList.add('expandButton');
+
+  articleTitle.textContent = object.title;
+  date.textContent = object.date;
+
+
 
   spanElement.addEventListener('click', event => {
     console.log('button click', event.target);
@@ -115,9 +127,13 @@ function createComponent(object){
 
   })
 
-
   return article;
 }
+
+data.map(function (object){
+  createComponent(object);
+})
+
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
