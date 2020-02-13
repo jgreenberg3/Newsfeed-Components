@@ -97,43 +97,60 @@ function createComponent(object){
   const p2 = document.createElement('p');
   const p3 = document.createElement('p'); 
   const expandButton = document.createElement('span');
-  
+  const buttonOpen = document.createElement('button');
+  const buttonClose = document.createElement('button');
+
   article.appendChild(articleTitle);
   article.appendChild(date);
   article.appendChild(p1);
   article.appendChild(p2);
   article.appendChild(p3);
   article.appendChild(expandButton);
+  expandButton.appendChild(buttonOpen);
+  expandButton.appendChild(buttonClose);
 
   article.classList.add('article');
   articleTitle.classList.add('articleTitle');
   date.classList.add('date');
-  
+  p1.classList.add('articleOpen');
+  p2.classList.add('articleOpen');
+  p3.classList.add('articleOpen');
   expandButton.classList.add('expandButton');
-
+  buttonOpen.classList.add('panel-btn-open');
+  buttonClose.classList.add('panel-btn-close', 'hide-btn');
+  
   articleTitle.textContent = object.title;
   date.textContent = object.date;
+  p1.textContent = object.firstParagraph;
+  p2.textContent = object.secondParagraph;
+  p3.textContent = object.thirdParagraph;
+  buttonOpen.textContent = '\u25bc';
+  buttonClose.textContent = '\u25b2';
 
-
-
-  spanElement.addEventListener('click', event => {
+  expandButton.addEventListener('click', event => {
     console.log('button click', event.target);
 
     // toggle 'hide-btn' on the button
-    spanElement.classList.toggle('hide-btn');
+    buttonOpen.classList.toggle('hide-btn');
+    buttonClose.classList.toggle('hide-btn');
 
     // change the visibility of the 'article' class with the 'toggle-on' class
-    article.classList.toggle('toggle-on');
+    p1.classList.toggle('toggle-on');
+    p2.classList.toggle('toggle-on');
+    p3.classList.toggle('toggle-on');
 
   })
 
   return article;
 }
 
-data.map(function (object){
-  createComponent(object);
-})
 
+const articles = document.querySelector('.articles');
+console.log(articles);
+
+data.map(function (object){
+  articles.appendChild(createComponent(object));
+})
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
