@@ -85,7 +85,24 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  }, 
+  {
+    title: 'Added Article To Array 2020',
+    date: 'Jan 1st, 2019',
+    firstParagraph: `Hodor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
+          hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
+          Hodor hodor hodor hodor hodor! Hodor hodor - HODOR hodor, hodor hodor hodor hodor hodor; hodor hodor? `,
+
+    secondParagraph: `Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor;
+          hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
+          hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
+          hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
+
+    thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+          Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
+
 ];
 
 function createComponent(object){
@@ -112,33 +129,23 @@ function createComponent(object){
   article.classList.add('article');
   articleTitle.classList.add('articleTitle');
   date.classList.add('date');
-  p1.classList.add('articleOpen');
-  p2.classList.add('articleOpen');
-  p3.classList.add('articleOpen');
+  p1.classList.add('p1');
+  p2.classList.add('p2');
+  p3.classList.add('p3');
   expandButton.classList.add('expandButton');
-  buttonOpen.classList.add('panel-btn-open');
-  buttonClose.classList.add('panel-btn-close', 'hide-btn');
   
   articleTitle.textContent = object.title;
   date.textContent = object.date;
   p1.textContent = object.firstParagraph;
   p2.textContent = object.secondParagraph;
   p3.textContent = object.thirdParagraph;
-  buttonOpen.textContent = '\u25bc';
-  buttonClose.textContent = '\u25b2';
-
+  expandButton.textContent = '\u25bc';
+  
   expandButton.addEventListener('click', event => {
     console.log('button click', event.target);
 
-    // toggle 'hide-btn' on the button
-    buttonOpen.classList.toggle('hide-btn');
-    buttonClose.classList.toggle('hide-btn');
-
-    // change the visibility of the 'article' class with the 'toggle-on' class
-    p1.classList.toggle('toggle-on');
-    p2.classList.toggle('toggle-on');
-    p3.classList.toggle('toggle-on');
-
+    article.classList.toggle('article-open');
+    
   })
 
   return article;
